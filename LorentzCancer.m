@@ -1,6 +1,6 @@
 function [phi, x_t, y_t, vx_t, vy_t, xa, ya, AC_para] = LorentzCancer(N, T)
 %% shrink adipocyte and rescale so that the diameter of small cancer cell is 1
-amp = 1 / 0.12; % box size rescale factor
+amp = 1 / 0.2; % box size rescale factor
 Ncb = floor(N / 2);
 Ncs = N - Ncb;
 Dc = [1.4 * ones(Ncb, 1); ones(Ncs, 1)];
@@ -94,18 +94,21 @@ dt_fire = 0.01;
 Nt_fire = 1e7;
 [xc, yc] = FIRE_VL(xc, yc, xa, ya, AC_para, Fthresh, dt_fire, Nt_fire);
 %% NVT
+rng(1);
 Nt = 4e6;
 dt = 0.01;
+beta = 5;
 
 % TO DO
-% initialize velocity (variable names: vx and vy)based on the input temperature T here
+% initialize velocity (variable names: vx and vy) based on the input temperature T here
 % vx and vy will both be a N x 1 array
-% don't forget to remove the mean velocity in the x and y direction
+% don't forget to remove the mean velocity in the x and y direction after drawing 
+% random numbers to avoid the whole system to drift
 
 
 % TO DO
-% initialize two N x (Nt/100) arrays, x_t, y_t, to store xc and yc, and two N x (Nt/100)
-% arrays, vx_t, vy_t, to store vx and vy, every 100 time steps
+% initialize two N x (Nt/10) arrays, x_t, y_t, to store xc and yc, and two N x (Nt/10)
+% arrays, vx_t, vy_t, to store vx and vy, every 10 time steps
 
 % verlet list
 VL_c = zeros(N * 5, 2);
