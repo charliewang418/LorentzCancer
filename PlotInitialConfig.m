@@ -1,6 +1,6 @@
 function PlotInitialConfig(N)
 %% shrink cancer cell size while increasing cancer cell number
-amp = 1 / 0.12;
+amp = 1 / 0.2;
 Ncb = floor(N / 2);
 Ncs = N - Ncb;
 Dc = [1.4 * ones(Ncb, 1); ones(Ncs, 1)];
