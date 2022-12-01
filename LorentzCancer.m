@@ -1,4 +1,4 @@
-function [phi, x_t, y_t, xa, ya, AC_para] = LorentzCancer(N, T)
+function [phi, x_t, y_t, vx_t, vy_t, xa, ya, AC_para] = LorentzCancer(N, T)
 %% shrink adipocyte and rescale so that the diameter of small cancer cell is 1
 amp = 1 / 0.12; % box size rescale factor
 Ncb = floor(N / 2);
@@ -104,8 +104,8 @@ dt = 0.01;
 
 
 % TO DO
-% initialize two N x (Nt/100) arrays, x_t, y_t, to store xc and yc every
-% 100 time steps
+% initialize two N x (Nt/100) arrays, x_t, y_t, to store xc and yc, and two N x (Nt/100)
+% arrays, vx_t, vy_t, to store vx and vy, every 100 time steps
 
 % verlet list
 VL_c = zeros(N * 5, 2);
